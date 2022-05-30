@@ -1,10 +1,5 @@
 import styled from 'styled-components'
 
-type ActiveBrandProps = {
-  border?: any
-  coloring?: any
-}
-
 export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
@@ -20,13 +15,12 @@ export const BrandsMenu = styled.div`
   margin-top: 5vh;
 `
 
-export const BrandButton = styled.button<ActiveBrandProps>`
+export const BrandButton = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-  border-bottom: ${(props: ActiveBrandProps) =>
-    props.border && '2px solid red'};
-  color: ${(props: ActiveBrandProps) => (props.coloring ? 'red' : '#000')};
+  border-bottom: ${(props) => props.isActiveBrand && '2px solid red'};
+  color: ${(props) => (props.isActiveBrand ? 'red' : '#000')};
   font-size: 1rem;
 `
 
