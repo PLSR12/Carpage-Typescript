@@ -2,7 +2,10 @@ import React from 'react'
 
 import { Container, ContainerInfo } from './styles'
 
-export default function Home () {
+import SimpleAccordion from './../../components/SimpleAccordion'
+import VehiclesCarrousel from '../../components/VehiclesCarrousel'
+
+export default function Home() {
   return (
     <Container>
       <ContainerInfo>
@@ -29,6 +32,8 @@ export default function Home () {
           se realizem mais rápido e da melhor forma possível.
         </p>
       </ContainerInfo>
+      <SimpleAccordion />
+      <VehiclesCarrousel />
     </Container>
   )
 }
