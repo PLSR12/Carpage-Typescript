@@ -1,12 +1,4 @@
-import {
-  useState,
-  useEffect,
-  ReactNode,
-  Key,
-  ReactChild,
-  ReactFragment,
-  ReactPortal,
-} from 'react'
+import { useState, useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
@@ -31,7 +23,7 @@ export default function Trucks({ brand, state }: TrucksPage) {
     brandId = state.brandId
   }
 
-  const [brands, setBrands] = useState<any>([])
+  const [brands, setBrands] = useState<any>([brandId])
   const [trucks, setTrucks] = useState<any>([])
 
   useEffect(() => {
@@ -39,6 +31,7 @@ export default function Trucks({ brand, state }: TrucksPage) {
       const { data }: any = await api.get('brands')
 
       let brandsTrucks = data.slice(12, 20)
+      console.log(brandsTrucks)
 
       const newBrands: any = [{ id: 0, name: 'Todas' }, ...brandsTrucks]
 
@@ -65,7 +58,7 @@ export default function Trucks({ brand, state }: TrucksPage) {
     <Container>
       <BrandsMenu>
         {brands &&
-          brands.map((brand: { id: number; name: ReactFragment }) => (
+          brands.map((brand: { id: number; name: string }) => (
             <BrandButton type="button" key={brand.id}>
               {brand.name}
             </BrandButton>
