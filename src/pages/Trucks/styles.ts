@@ -16,12 +16,13 @@ export const BrandsMenu = styled.div`
   margin-top: 5vh;
 `
 
-export const BrandButton = styled.button`
+export const BrandButton = styled.button<{ isActiveBrand: boolean }>`
   cursor: pointer;
   background: none;
   border: none;
+  border-bottom: ${(props) => props.isActiveBrand && '2px solid red'};
+  color: ${(props) => (props.isActiveBrand ? 'red' : '#000')};
   font-size: 1rem;
-  line-height: 22px;
 `
 
 export const TrucksContainer = styled.div`

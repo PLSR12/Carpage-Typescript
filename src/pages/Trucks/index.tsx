@@ -16,24 +16,25 @@ export default function Trucks({ state }: any) {
     brandId = state.brandId
   }
 
-  const [brands, setBrands] = useState<any>([brandId])
-  const [trucks, setTrucks] = useState<any>([])
+  const [brands, setBrands] = useState([])
+  const [trucks, setTrucks] = useState([])
+  const [filteredTrucks, setFilteredTrucks] = useState([])
+  const [activeBrands, setActiveBrands] = useState(brandId)
 
   useEffect(() => {
     async function loadBrands() {
       const { data }: any = await api.get('brands')
 
-      let brandsTrucks = data.slice(12, 20)
-      console.log(brandsTrucks)
+      let brandsCars = data.slice(12, 18)
 
-      const newBrands: any = [{ id: 0, name: 'Todas' }, ...brandsTrucks]
+      const newBrands: any = [{ id: 0, name: 'Todas' }, ...brandsCars]
 
       setBrands(newBrands)
     }
     async function loadTrucks() {
       const { data: allTrucks }: any = await api.get('trucks')
 
-      const newTrucks = allTrucks.map((truck: { price: number | bigint }) => {
+      const newTrucks = allTrucks.map((truck: any) => {
         return {
           ...truck,
           formatedPrice: formatCurrency(truck.price),
@@ -47,19 +48,38 @@ export default function Trucks({ state }: any) {
     loadBrands()
   }, [])
 
+  useEffect(() => {
+    if (activeBrands === 0) {
+      setFilteredTrucks(trucks)
+    } else {
+      const newFilteredTrucks = trucks.filter(
+        (truck: { brand_id: any }) => truck.brand_id === activeBrands
+      )
+
+      setFilteredTrucks(newFilteredTrucks)
+    }
+  }, [activeBrands, trucks])
+
   return (
     <Container>
       <BrandsMenu>
         {brands &&
-          brands.map((brand: { id: number; name: string }) => (
-            <BrandButton type="button" key={brand.id}>
+          brands.map((brand: { id: any; name: string }) => (
+            <BrandButton
+              type="button"
+              key={brand.id}
+              isActiveBrand={activeBrands === brand.id}
+              onClick={() => {
+                setActiveBrands(brand.id)
+              }}
+            >
               {brand.name}
             </BrandButton>
           ))}
       </BrandsMenu>
       <TrucksContainer>
-        {trucks &&
-          trucks.map((truck: { id: number }) => (
+        {filteredTrucks &&
+          filteredTrucks.map((truck: { id: number }) => (
             <CardTrucks key={truck.id} truck={truck} />
           ))}
       </TrucksContainer>
