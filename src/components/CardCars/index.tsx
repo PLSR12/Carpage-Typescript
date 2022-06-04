@@ -2,12 +2,11 @@ import PropTypes from 'prop-types'
 
 import Button from '../Button'
 
-import { ICardCarsProps } from './types'
-
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import LocalGasStationIcon from '@mui/icons-material/LocalGasStation'
 import AvTimerIcon from '@mui/icons-material/AvTimer'
 import MediationIcon from '@mui/icons-material/Mediation'
+
 import {
   ContainerCard,
   CarName,
@@ -18,7 +17,7 @@ import {
   Line,
 } from './styles'
 
-export default function CardCars({ car }: ICardCarsProps) {
+export default function CardCars({ car }: any) {
   return (
     <ContainerCard>
       <ContainerImage>
