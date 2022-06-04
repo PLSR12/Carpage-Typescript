@@ -15,19 +15,9 @@ export const ContainerLeft = styled.div`
   align-items: center;
   gap: 1vh;
 
-  button {
-    background-color: black;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    width: 15vh;
-    height: 10vh;
-    min-width: 12vh;
-  }
-
   img {
     display: flex;
-    width:19vh;
+    width: 19vh;
   }
 `
 export const ContainerRight = styled.div`
@@ -41,8 +31,8 @@ export const PageLink = styled.a<{ isActive: boolean }>`
   cursor: pointer;
   text-decoration: none;
   font-size: 1rem;
-  color: ${props => (props.isActive ? 'red' : 'white')};
-  font-weight: ${props => (props.isActive ? 'bold' : 'normal')};
+  color: ${(props) => (props.isActive ? 'red' : 'white')};
+  font-weight: ${(props) => (props.isActive ? 'bold' : 'normal')};
 `
 export const Line = styled.div`
   height: 4vh;

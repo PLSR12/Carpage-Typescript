@@ -1,6 +1,4 @@
-import React from 'react'
-
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 import Logo from '../../assets/logo_super_carros.png'
 
@@ -11,21 +9,21 @@ import {
   ContainerLeft,
   ContainerRight,
   PageLink,
-  Line
+  Line,
 } from './styles'
 
-export default function Header () {
+export default function Header() {
   const {
     push,
-    location: { pathname }
+    location: { pathname },
   } = useHistory()
 
   return (
     <Container>
       <ContainerLeft>
-        <button onClick={() => push(paths.Home)}>
-          <img src={Logo} alt='Logo' />
-        </button>
+        <Link to="/">
+          <img src={Logo} alt="Logo" />
+        </Link>
       </ContainerLeft>
       <ContainerRight>
         <PageLink
