@@ -8,15 +8,20 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 
 import api from '../../../services/api'
 
-import  ErrorMessage  from '../../../components/ErrorMessage'
+import ErrorMessage from '../../../components/ErrorMessage'
 
 import { Container, Label, Input, ButtonStyle, LabelUpload } from './styles'
 
-function NewBrand () {
+interface IBrand {
+  name: string
+  file: string
+}
+
+function NewBrand() {
   const [fileName, setFileName] = useState(null)
   const { push } = useHistory()
 
-  const onSubmit = async data => {
+  const onSubmit = async (data: any) => {
     const brandDataFormData = new FormData()
 
     brandDataFormData.append('name', data.name)
@@ -24,7 +29,7 @@ function NewBrand () {
 
     await toast.promise(api.post('brands', brandDataFormData), {
       success: 'Marca criada com sucesso',
-      error: 'Falha ao criar a marca'
+      error: 'Falha ao criar a marca',
     })
 
     setTimeout(() => {
@@ -34,23 +39,23 @@ function NewBrand () {
 
   const schema = Yup.object().shape({
     name: Yup.string().required('O nome é obrigatório'),
-    file: Yup.mixed().test('required', 'Carregue uma imagem', value => {
+    file: Yup.mixed().test('required', 'Carregue uma imagem', (value) => {
       return value && value.length > 0
-    })
+    }),
   })
 
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  } = useForm({ resolver: yupResolver(schema) })
+    formState: { errors },
+  } = useForm<IBrand>({ resolver: yupResolver(schema) })
 
   return (
     <Container>
-      <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+      <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
         <div>
           <Label>Nome:</Label>
-          <Input type='text' {...register('name')} />
+          <Input type="text" {...register('name')} />
           <ErrorMessage>{errors.name?.message}</ErrorMessage>
           <div>
             <LabelUpload>
@@ -61,9 +66,9 @@ function NewBrand () {
                 </>
               )}
               <input
-                type='file'
+                type="file"
                 {...register('file')}
-                onChange={value => {
+                onChange={(value: any): void => {
                   setFileName(value.target.files[0]?.name)
                 }}
               />
@@ -71,7 +76,7 @@ function NewBrand () {
             <ErrorMessage>{errors.file?.message}</ErrorMessage>
           </div>
 
-          <ButtonStyle type='submit'> Adicionar Marca </ButtonStyle>
+          <ButtonStyle type="submit"> Adicionar Marca </ButtonStyle>
         </div>
       </form>
     </Container>

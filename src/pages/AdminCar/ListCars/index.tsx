@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import paths from '../../../constants/paths'
 
@@ -14,26 +14,26 @@ import { Container, EditIconStyles } from './styles'
 import api from '../../../services/api'
 import formatCurrency from '../../../utils/formatCurrency'
 
-function ListCars () {
+function ListCars() {
   const [cars, setCars] = useState([])
   const { push } = useHistory()
 
   useEffect(() => {
-    async function loadCars () {
-      const { data } = await api.get('Cars')
+    async function loadCars() {
+      const { data }: any = await api.get('Cars')
       setCars(data)
     }
     loadCars()
   }, [])
 
-  function editCar (car) {
+  function editCar(car: any) {
     push(paths.EditCar, { car })
   }
 
   return (
     <Container>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
               <TableCell>Nome</TableCell>
@@ -48,27 +48,27 @@ function ListCars () {
           </TableHead>
           <TableBody>
             {cars &&
-              cars.map(car => (
+              cars.map((car: any) => (
                 <TableRow
                   key={car.id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                  <TableCell component='th' scope='row'>
+                  <TableCell component="th" scope="row">
                     {car.name}
                   </TableCell>
-                  <TableCell component='th' scope='row'>
+                  <TableCell component="th" scope="row">
                     {car.description}
                   </TableCell>
-                  <TableCell component='th' scope='row'>
+                  <TableCell component="th" scope="row">
                     {car.transmission}
                   </TableCell>
-                  <TableCell component='th' scope='row'>
+                  <TableCell component="th" scope="row">
                     {car.year}
                   </TableCell>
-                  <TableCell component='th' scope='row'>
+                  <TableCell component="th" scope="row">
                     {car.mileage} Km
                   </TableCell>
-                  <TableCell component='th' scope='row'>
+                  <TableCell component="th" scope="row">
                     {car.fuel}
                   </TableCell>
                   <TableCell>{formatCurrency(car.price)}</TableCell>

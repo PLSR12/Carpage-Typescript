@@ -18,7 +18,7 @@ function NewCar() {
   const [brands, setBrands] = useState([])
   const { push } = useHistory()
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     const carDataFormData = new FormData()
 
     carDataFormData.append('name', data.name)
@@ -64,11 +64,11 @@ function NewCar() {
 
   useEffect(() => {
     async function loadBrands() {
-      const { data: Brands } = await api.get('brands')
+      const { data: Brands }: any = await api.get('brands')
 
       let brandsCars = Brands.slice(0, 6)
 
-      const newBrands = [...brandsCars]
+      const newBrands: any = [...brandsCars]
 
       setBrands(newBrands)
     }
@@ -124,7 +124,7 @@ function NewCar() {
             <input
               type="file"
               {...register('file')}
-              onChange={(value) => {
+              onChange={(value: any): void => {
                 setFileName(value.target.files[0]?.name)
               }}
             />
