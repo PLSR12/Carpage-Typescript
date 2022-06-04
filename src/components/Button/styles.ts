@@ -4,7 +4,7 @@ export const ComponentButton = styled.button`
   min-width: 18vh;
   height: 5vh;
   background: red;
-  border-radius: 15px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   color: #eeeeee;
