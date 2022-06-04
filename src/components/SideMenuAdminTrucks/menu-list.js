@@ -1,7 +1,6 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import paths from '../../constants/paths'
 import LocalShippingIcon from '@mui/icons-material/LocalShipping'
-import BrandingWatermarkIcon from '@mui/icons-material/BrandingWatermark'
 
 const listLinks = [
   {

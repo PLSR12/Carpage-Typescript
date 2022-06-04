@@ -7,17 +7,14 @@ import { Container, ItemContainer, ListLink } from './styles'
 import listLinks from './menu-list'
 import Logo from '../../assets/logo_super_carros.png'
 
-export default function SideMenuAdminTrucks ({ path }) {
-  const {
-    push,
-    location: { pathname }
-  } = useHistory()
+export default function SideMenuAdminMotors({ path }) {
+  const { push } = useHistory()
   return (
     <Container>
       <hr></hr>
-      {listLinks.map(item => (
+      {listLinks.map((item) => (
         <ItemContainer key={item.id} isActive={path === item.link}>
-          <item.icon className='icon' />
+          <item.icon className="icon" />
           <ListLink to={item.link}>{item.label} </ListLink>
         </ItemContainer>
       ))}
@@ -25,13 +22,13 @@ export default function SideMenuAdminTrucks ({ path }) {
       <ItemContainer
         style={{ position: 'fixed', bottom: '30px' }}
       ></ItemContainer>
-      <button onClick={() => push('/caminhoes')}>
-        <img src={Logo} alt='Logo' />
+      <button onClick={() => push('/motos')}>
+        <img src={Logo} alt="Logo" />
       </button>
     </Container>
   )
 }
 
-SideMenuAdminTrucks.propTypes = {
-  path: PropTypes.string
+SideMenuAdminMotors.propTypes = {
+  path: PropTypes.string,
 }

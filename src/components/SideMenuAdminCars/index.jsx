@@ -10,7 +10,6 @@ import Logo from '../../assets/logo_super_carros.png'
 export default function SideMenuAdminCars({ path }) {
   const {
     push,
-    location: { pathname },
   } = useHistory()
 
   return (

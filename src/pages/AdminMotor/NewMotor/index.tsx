@@ -61,7 +61,7 @@ function NewMotors() {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(schema) })
+  } = useForm<IAllVehicles>({ resolver: yupResolver(schema) })
 
   useEffect(() => {
     async function loadBrands() {
