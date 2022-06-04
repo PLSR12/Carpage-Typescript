@@ -10,14 +10,7 @@ import formatCurrency from '../../utils/formatCurrency'
 
 import api from '../../services/api'
 
-import IVehicles from '../../models/IVehicles'
-
-interface MotoPage {
-  state: any
-  brand: IVehicles
-}
-
-export default function Motorcycles({ brand, state }: MotoPage) {
+export default function Motorcycles({ state }: any) {
   let brandId = 0
   if (state?.brandId) {
     brandId = state.brandId
