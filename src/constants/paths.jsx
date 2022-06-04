@@ -5,8 +5,8 @@ const paths = {
   PageTrucks: '/caminhoes',
   
   Motors: '/motos/admin',
-  EditMotors: '/motos/editar',
-  NewMotors: '/motos/nova',
+  EditMotor: '/motos/editar',
+  NewMotor: '/motos/nova',
 
   NewBrand: '/nova-marca',
 
@@ -14,7 +14,7 @@ const paths = {
   EditCar: '/carros/editar',
   NewCar: '/carros/novo',
 
-  Trucks: '/caminhoes/admim',
+  Trucks: '/caminhoes/admin',
   EditTruck: '/caminhoes/editar',
   NewTruck: '/caminhoes/novo',
 }
