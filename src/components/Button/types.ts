@@ -1,5 +1,6 @@
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
-export interface IButtonProps {
-  children: ReactNode;
+export  default interface IButtonProps {
+  children: ReactNode
+  type?: any
 }
