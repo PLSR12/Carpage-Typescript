@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import Cars from './pages/Cars'
 import Motors from './pages/Motors'
 import Trucks from './pages/Trucks'
-import Admin from './pages/Admin'
+import Admin from './pages/AdminCar'
 
 import paths from './constants/paths'
 
