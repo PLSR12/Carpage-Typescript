@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Container, ContainerInfo } from './styles'
 
-import SimpleAccordion from './../../components/SimpleAccordion'
+import SimpleAccordion from '../../components/SimpleAccordion'
 import VehiclesCarrousel from '../../components/VehiclesCarrousel'
 
 export default function Home() {
