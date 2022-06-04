@@ -19,8 +19,6 @@ export const BrandButton = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-  border-bottom: ${(props) => props.isActiveBrand && '2px solid red'};
-  color: ${(props) => (props.isActiveBrand ? 'red' : '#000')};
   font-size: 1rem;
 `
 
