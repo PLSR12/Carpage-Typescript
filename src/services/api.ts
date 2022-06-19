@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiVehicles = axios.create({
-    baseURL: 'http://localhost:3100/'
+    baseURL: 'https://api-carpage-production.up.railway.app/'
 })
 
 export default apiVehicles
